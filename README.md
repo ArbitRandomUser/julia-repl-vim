@@ -39,3 +39,10 @@ completions.
 REPL server code is based on [RemoteREPL.jl] project.
 
 [RemoteREPL.jl]: https://github.com/c42f/RemoteREPL.jl
+
+
+## differences from og repo
+- JuliaREPLConnect requires port number
+- all buffers connect to REPL instead of just the buffer its called from
+- omnifunc is optional use g:julia_repl_complete=1 to enable repl completion 
+

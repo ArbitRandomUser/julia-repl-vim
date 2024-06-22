@@ -112,17 +112,18 @@ function setup(po)
     host="localhost",
     port=po,
     on_close=function()
-      vim.api.nvim_buf_set_var(buf, 'julia_repl', nil)
+      --vim.api.nvim_buf_set_var(buf, 'julia_repl', nil)
+      vim.api.nvim_set_var('julia_repl', nil)
     end
   }
-  vim.api.nvim_buf_set_var(buf, 'julia_repl', repl)
+  vim.api.nvim_set_var('julia_repl', repl)
   if vim.g.julia_repl_complete then
     vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.julia_repl_comp')
   end
 end
 
 function _G.julia_repl_send(code)
-  local repl = vim.b.julia_repl
+  local repl = vim.g.julia_repl
   if repl == nil or repl == vim.NIL then
     return logerror("not connected to Julia REPL (use :JuliaREPLConnect)")
   end
